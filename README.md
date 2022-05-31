@@ -1,10 +1,10 @@
 [![License](https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-green)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/AndresDuran53/zarus-red-controller?sort=semver)
-![GitHub Tag (latest SemVer)](https://img.shields.io/github/v/tag/AndresDuran53/zarus-red-controller?sort=semver)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/AndresDuran53/zarus-network-controller?sort=semver)
+![GitHub Tag (latest SemVer)](https://img.shields.io/github/v/tag/AndresDuran53/zarus-network-controller?sort=semver)
 
-<img  width="480" src="https://raw.githubusercontent.com/AndresDuran53/zarus-red-controller/master/iot_banner.png">
+<img  width="480" src="https://raw.githubusercontent.com/AndresDuran53/zarus-network-controller/master/iot_banner.png">
 
-# IoT Controller for ESP8266 and ESP32
+# IoT Network Controller for ESP8266 and ESP32
 Easy-To-Use library to implement just the code that you need.
 
 Look at the [Zarus IoT Hub](https://github.com/AndresDuran53/zarus-iot-app) to get an easy way to connect to the devices without an IP.
