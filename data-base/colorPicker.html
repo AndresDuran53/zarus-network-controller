@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Color Changer</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css" onload="this.media='all'">
+		<link rel="stylesheet" href="css/zarus.css" onload="this.media='all'">
+    <link rel="stylesheet" href="css/loadingScreen.css">
+    <link rel="stylesheet" href="css/colorPicker.css" onload="this.media='all'">
+		<noscript>
+		  <link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+			<link rel="stylesheet" href="css/zarus.css" media="screen">
+      <link rel="stylesheet" href="css/loadingScreen.css">
+      <link rel="stylesheet" href="css/colorPicker.css" media="screen">
+		</noscript>
+  </head>
+
+  <body onload="createWheel()" class="bg-dark">
+    <div id="loadingSreenId" class="loading">
+      <h2 id="loadingTitle">Loading</h2>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="mainDivId">
+      <div class="container">
+    		<div class="py-2 text-center">
+    			<!--<img src="img/Zarus_logo_blanco.svg" alt="" width="70">-->
+          <div class="container-fluid" style="padding-top: 50px;">
+            <div class="row">
+              <div id="colorDiv" class="col-xs-7">
+              </div>
+              <div id="colorShowDiv" class="col-xs-3">
+                <div class="col" style="max-height: 80px; position: absolute;">
+                  <p style="display: none" id="colorPickerTextId">RGB: 0,0,0</p>
+                  <canvas id="canvasShowColorId"></canvas>
+                  <input type="range" min="0" max="100" value="50" class="slider" id="colorBrightnessRangeId">
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="container-fluid" style="margin:20px">
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendSolid()" type="submit">Solid</button>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendBreathing()" type="submit">Breathing</button>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendAttack()" type="submit">Attack</button>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendBlink()" type="submit">Blink</button>
+                </div>
+                <div class="">
+                  <input type="range" min="0" max="100" value="50" class="slider" id="patronRangeId">
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendFade()" type="submit">Fade</button>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendWheel()" type="submit">Wheel</button>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendDisco()" type="submit">Disco</button>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-gray btn-block btn-mg" onclick="sendNightClub()" type="submit">NightClub</button>
+                </div>
+                <div class="">
+                  <input type="range" min="0" max="100" value="50" class="slider" id="colorPatronRangeId">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-zarus btn-lg btn-block" type="cancel" onclick="window.location='index.html'">Back to Main</button>
+          <footer class="my-5 zarus-iot-footer text-muted text-center" style="margin:20px">
+            <p class="mb-1">&copy; Zarus Laboratories</p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var mainDivId = document.getElementById("mainDivId");
+    mainDivId.style.opacity = 0;
+  </script>
+  <script src="js/loadingScreen.js"></script>
+  <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+  <script src="js/colorPicker.js"></script>
+</html>

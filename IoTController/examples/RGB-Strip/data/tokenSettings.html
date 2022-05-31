@@ -1,0 +1,48 @@
+<html lang="en">
+	<!doctype html>
+	<head>
+		<title>Token Settings</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/bootstrap.min.css" onload="this.media='all'">
+		<link rel="stylesheet" href="css/zarus.css" onload="this.media='all'">
+		<noscript>
+			<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+			<link rel="stylesheet" href="css/zarus.css" media="screen">
+		</noscript>
+	</head>
+
+	<body class="bg-dark">
+		<div id="mainDivId">
+
+			<div class="container">
+				<div class="principal-form">
+					<form action="/setValues" method="get" class="needs-validation" novalidate>
+						<div class="card-body text-light bg-dark" style="text-align: left;">
+							<h2 class="mb-3 title-zarus">MQTT Config</h2>
+								<div class="col-mb-3">
+									<label for="tokenId">ID del usuario</label>
+									<input type="text" class="form-control input-zarus" id="mctid" name="mctid" placeholder="TokenID" value="" required>
+								</div>
+								<div class="col-mb-3">
+									<label for="DeviceId">ID del dispositivo</label>
+									<input type="text" class="form-control input-zarus" id="mcdid" name="mcdid" placeholder="ID del dispositivo" value="" required>
+								</div>
+						</div>
+						<div class="bg-dark border-dark">
+							<button class="btn btn-zarus btn-lg btn-block" type="submit">Guardar</button>
+							<button class="btn btn-zarus-cancel btn-lg btn-block" type="cancel" onclick="window.history.back();return false;">Cancel</button>
+						</div>
+					</form>
+				</div>
+				<footer class="my-5 pt-5 text-muted text-center text-small">
+					<p class="mb-1">Zarus Laboratories</p>
+				</footer>
+			</div>
+			<script src="js/jquery.min.js"></script>
+			<script src="js/bootstrap.bundle.min.js"></script>
+			<script src="js/form-validation.js"></script>
+		</div>
+	</body>
+</html>

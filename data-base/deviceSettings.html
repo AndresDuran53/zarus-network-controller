@@ -1,0 +1,55 @@
+<html lang="en">
+	<!doctype html>
+	<head>
+		<title>Device Settings</title>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/bootstrap.min.css" onload="this.media='all'">
+		<link rel="stylesheet" href="css/zarus.css" onload="this.media='all'">
+		<noscript>
+			<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+			<link rel="stylesheet" href="css/zarus.css" media="screen">
+		</noscript>
+	</head>
+
+	<body class="bg-dark">
+		<div id="mainDivId">
+			<div class="container">
+				<div class="principal-form container-reduced">
+					<form action="/setValues" method="get" class="needs-validation" novalidate>
+						<div class="card-body text-light bg-dark" style="text-align: left;">
+							<h2 class="mb-3 title-zarus">Configuracion del dispositivo</h2>
+								<div class="col-mb-3">
+									<label for="ssid">Tipo de dispositivo</label>
+									<select class="custom-select form-control input-zarus" id="dtid" name="dtid">
+										<option selected value="1">RGB-5050 Ligth</option>
+										<option value="2">Garage Sensor</option>
+										<option value="3">Speaker controller</option>
+									</select>
+								</div>
+								<div class="col-mb-3">
+									<label for="ssid">Nombre del dispositivo</label>
+									<input type="text" class="form-control input-zarus" id="rcsid" name="rcsid" placeholder="abc123" value="" maxlength="6" required>
+								</div>
+								<div class="col-mb-3">
+									<label for="password">Contraseña del dispositivo</label>
+									<input type="password" class="form-control input-zarus" id="rcpid" name="rcpid" placeholder="Contraseña" value="" maxlength="20" required>
+								</div>
+						</div>
+						<div class="bg-dark border-dark">
+							<button class="btn btn-zarus btn-lg btn-block" type="submit">Guardar</button>
+							<button class="btn btn-zarus-cancel btn-lg btn-block" type="cancel" onclick="window.history.back();return false;">Cancel</button>
+						</div>
+					</form>
+				</div>
+				<footer class="my-5 pt-5 text-muted text-center text-small">
+					<p class="mb-1">Zarus Laboratories</p>
+				</footer>
+			</div>
+			<script src="js/jquery.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/form-validation.js"></script>
+		</div>
+	</body>
+</html>

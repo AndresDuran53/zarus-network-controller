@@ -1,0 +1,151 @@
+:root {
+    --zarus-black: #0F0F0D;
+    --zarus-gray-light: #657075;
+    --zarus-gray: #3C3C3B;
+    --zarus-white: #DADADA;
+    --zarus-background: #1D1D1D;
+    --zarus-complement: #00A69C;
+    --zarus-complement-dark: #008078;
+    --zarus-complement-green: #0C9981;
+    --zarus-red: #4f1414;
+    --zarus-dark-red: #2d1717;
+    --zarus-text-muted: #707070;
+    --navbar-brand-fontsize: 2rem;
+    --navbar-text-fontsize: 1.6rem;
+    --navbar-margin-text: 1rem;
+}
+body {
+    margin: 0;
+    font-weight: 700;
+    line-height: 25px;
+    color: #212529;
+    text-align: center;
+    background-color: #1d1d1d;
+}
+
+.principal-form {
+  max-width: 430px;
+  min-width: 340px;
+  padding: 15px;
+  margin: 5 auto;
+  display: inline-block;
+}
+
+.bg-dark {
+    color: var(--zarus-white);
+    background-color: var(--zarus-background) !important;
+}
+.btn{
+  font-style: italic !important;
+  font-variant: normal !important;
+  font-weight: 700 !important;
+  line-height: 25px !important;
+}
+.btn-zarus {
+    color: #fff;
+    background-color: var(--zarus-complement-dark);
+    border-color: var(--zarus-complement-dark);
+}
+.btn-zarus:hover {
+    color: var(--zarus-complement-dark);
+    background-color: #c8cacc;
+    border-color: var(--zarus-complement-green);
+}
+.btn-zarus.focus, .btn-zarus:focus {
+    color: #fff;
+    background-color: var(--zarus-complement);
+    border-color: var(--zarus-complement-dark);
+    box-shadow: 0 0 0 .2rem var(--zarus-complement-dark);
+}
+.btn-zarus.disabled, .btn-zarus:disabled {
+    color: #fff;
+    background-color: var(--zarus-complement);
+    border-color: var(--zarus-complement-dark);
+}
+.btn-zarus:not(:disabled):not(.disabled).active, .btn-zarus:not(:disabled):not(.disabled):active, .show>.btn-zarus.dropdown-toggle {
+    color: #fff;
+    background-color: var(--zarus-complement-dark);
+    border-color: var(--zarus-complement);
+}
+.btn-zarus:not(:disabled):not(.disabled).active:focus, .btn-zarus:not(:disabled):not(.disabled):active:focus, .show>.btn-zarus.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem var(--zarus-complement-dark);
+}
+.btn-zarus-link {
+  color: var(--zarus-white);
+  border: 2px solid var(--zarus-gray-light);
+  background-color: transparent;
+}
+.btn-zarus-link:hover {
+    color: var(--zarus-white);
+    text-decoration: underline;
+    border-color: var(--zarus-gray);
+}
+.btn-zarus-link.focus, .btn-zarus-link:focus {
+    text-decoration: underline;
+    border-color: var(--zarus-gray);
+    box-shadow: 0 0 0 .1rem var(--zarus-complement-dark);
+}
+.btn-zarus-link.disabled, .btn-zarus-link:disabled {
+    color: var(--zarus-gray);
+    pointer-events: none;
+    border-color: var(--zarus-complement-green);
+}
+
+.btn-zarus-cancel{
+  color: var(--zarus-white);
+  border: 2px solid var(--zarus-gray-light);
+  background-color: transparent;
+}
+
+.btn-zarus-red {
+    color: #fff;
+    background-color: var(--zarus-red);
+    border-color: var(--zarus-dark-red);
+}
+
+.btn-outline-gray {
+  color: var(--zarus-white);
+  border: 2px solid var(--zarus-gray);
+  background-color: var(--zarus-background);
+}
+.btn-outline-gray:hover {
+  color: var(--zarus-black);
+  background-color: var(--zarus-gray);
+  border: 2px solid var(--zarus-gray);
+}
+.btn-outline-gray.focus, .btn-outline-gray:focus {
+  box-shadow: 0 0 0 .1rem var(--zarus-complement-green);
+}
+.btn-outline-gray.disabled, .btn-outline-gray:disabled {
+  color: var(--zarus-white);background-color: transparent;
+}
+.btn-outline-gray:not(:disabled):not(.disabled).active, .btn-outline-gray:not(:disabled):not(.disabled):active, .show>.btn-outline-gray.dropdown-toggle {
+  color: var(--zarus-black);background-color: var(--zarus-complement-green);border: 2px solid var(--zarus-gray);
+}
+.btn-outline-gray:not(:disabled):not(.disabled).active:focus, .btn-outline-gray:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-gray.dropdown-toggle:focus {
+  box-shadow: 0 0 0 .1rem rgba(248, 249, 250, .5);
+}
+
+
+.title-zarus {
+    color: var(--zarus-complement) !important;
+    text-align: center;
+}
+
+.input-zarus {
+  color: var(--zarus-text-white);
+  background-color: var(--zarus-background);
+  border: 1px solid var(--zarus-gray);
+  margin: 0 0 15 0;
+}
+
+.form-control:focus {
+  border-color: var(--zarus-complement);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+a.title-zarus:focus, a.title-zarus:hover {
+    color: var(--zarus-complement) !important;
+}
