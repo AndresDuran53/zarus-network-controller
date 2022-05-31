@@ -7,23 +7,23 @@
 # IoT Controller for ESP8266 and ESP32
 Easy-To-Use library to implement just the code that you need.
 
-Look the [Zarus IoT Hub](https://github.com/AndresDuran53/zarus-iot-app) to get an easy way to connect to the devices without an IP.
+Look at the [Zarus IoT Hub](https://github.com/AndresDuran53/zarus-iot-app) to get an easy way to connect to the devices without an IP.
 
-This library works with the ESP8266 and ESP32, and manage the connections of the device. This way the device can create an Access Point (AP mode) and connect to another Access Point (Station Mode) without re-writing again the code for each project.
+This library works with the ESP8266 and ESP32, and manages the connections of the device. This way the device can create an Access Point (AP mode) and connect to another Access Point (Station Mode) without re-writing again the code for each project.
 
-Is able to manage:
+It's able to manage:
 * AccesPoint and Stacion Mode simultaneously.
 * MQTT connection.
 * Local storage in EEPROM with indexing.
 * Loops async without delay().
 * Controls methods over a HTTP created with Bootstrap.
-* Modify stored data like credentials over HTTP.
-* Add device-type and an Unique identifier to avoid conflict.
-* Configure all this with almost no code and production-friendly
+* Modifies stored data like credentials over HTTP.
+* Adds device-type and an Unique identifier to avoid conflict.
+* Configures all this with almost no code and production-friendly
 
 ## Quick Start
 ### Libraries and tools needed
-Tools for upload files into the ESP device:
+Tools for uploading files into the ESP device:
 * ESP8266: [ESP8266fs](https://github.com/esp8266/arduino-esp8266fs-plugin/releases) | ESP32: [ESP32FS](https://github.com/me-no-dev/arduino-esp32fs-plugin/releases)
 
 Libraries:
@@ -55,7 +55,7 @@ Libraries:
     static void init();
     ```
   * Description:
-  Configure the connections with the data that we already pass on the setup.
+  Configure the connections with the data that we already passed on the setup.
 
 * **Loop:**
   * ```C++
@@ -95,7 +95,7 @@ Libraries:
     void print(String message);
     ```
   * Description:
-  Use is to print messages in the same format with the internal logger.
+  Use it to print messages in the same format with the internal logger.
   * Parameters:
     * message (String):
 
@@ -138,14 +138,14 @@ void loop() {
 - [x] Access Point at boot
 - [x] Easy connections with others AP
 - [x] EEPROM used to stored values
-- [x] Allowed create custom EEPROM variables
+- [x] Allows to create custom EEPROM variables
 - [x] Reconnections timers
-- [x] Allow add custom non-blocking timers
+- [x] Allows to add custom non-blocking timers
 - [x] MQTT Integration
 - [x] Logger integrated
 - [x] Update SPIFF due is deprecated
 - [x] Make it compatible with ESP32
-- [ ] Allow more types in EEPROM other than String
+- [ ] Allows more types in EEPROM other than String
 
 ## License
 Zarus IoT Controller is an open source code. All files are licenced under Creative Commons [Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es)
