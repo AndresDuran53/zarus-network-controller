@@ -58,7 +58,7 @@ Libraries:
   Configure the connections with the data that we already passed on the setup.
 
 * **Loop:**
-  * ```C++
+   ```C++
     static void loop();
     ```
   * Description:
