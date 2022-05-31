@@ -2,7 +2,7 @@
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/AndresDuran53/zarus-red-controller?sort=semver)
 ![GitHub Tag (latest SemVer)](https://img.shields.io/github/v/tag/AndresDuran53/zarus-red-controller?sort=semver)
 
-<img  width="480" src="https://raw.githubusercontent.com/AndresDuran53/zarus-red-controller/master/banner.png">
+<img  width="480" src="https://raw.githubusercontent.com/AndresDuran53/zarus-red-controller/master/iot_banner.png">
 
 # IoT Controller for ESP8266 and ESP32
 Easy-To-Use library to implement just the code that you need.
