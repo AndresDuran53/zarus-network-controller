@@ -1,0 +1,20 @@
+{
+    "authors": [
+        {
+            "maintainer": true,
+            "name": "Andrés Durán",
+            "url": "https://github.com/AndresDuran53"
+        }
+    ],
+    "description": "IoT Network Controller for ESP8266 and ESP32",
+    "frameworks": "arduino",
+    "keywords": "wifi, http, web, server, client, esp8266, esp32, iot, mqtt",
+    "license": "CC BY--NC--SA 4.0",
+    "name": "IoTController",
+    "platforms": "atmelavr, espressif8266, espressif32",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AndresDuran53/zarus-network-controller.git"
+    },
+    "version": "1.0.0"
+}
