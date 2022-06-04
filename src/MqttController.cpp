@@ -40,6 +40,7 @@ boolean MqttController::connect_mqtt()
     char deviceSubcribeTopic_chars[80];
     deviceSubcribeTopic.toCharArray(deviceSubcribeTopic_chars, 80);
     mqtt_client.subscribe(deviceSubcribeTopic_chars);
+    mqtt_client.publish(deviceAvailableTopic.c_str(), "online");
     return true;
   }
   return false;
