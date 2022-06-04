@@ -32,13 +32,11 @@ boolean MqttController::connect_mqtt()
   if(username == "" || password == "") return false;
   Logger::log("Trying MQTT server connection: " + serverName, Logger::INFO_LOG);
   Logger::log("USER: " + username + "| PASS: " + password, Logger::DEBUG_LOG);
-  char mqtt_clientname_chars[16];
-  char mqtt_username_chars[32];
-  char mqtt_password_chars[32];
-  deviceId.toCharArray(mqtt_clientname_chars, 16);
-  username.toCharArray(mqtt_username_chars, 32);
-  password.toCharArray(mqtt_password_chars, 32);
-  if (mqtt_client.connect(mqtt_clientname_chars, mqtt_username_chars, mqtt_password_chars)) {
+  int willQos = 1;
+  boolean willRetain = true;
+  String willMessage = "offline";
+  if (mqtt_client.connect(deviceId.c_str(), username.c_str(), password.c_str(),
+                          deviceAvailableTopic.c_str(),willQos,willRetain,willMessage.c_str())) {
     char deviceSubcribeTopic_chars[80];
     deviceSubcribeTopic.toCharArray(deviceSubcribeTopic_chars, 80);
     mqtt_client.subscribe(deviceSubcribeTopic_chars);
@@ -102,14 +100,7 @@ boolean MqttController::send_mqtt_notification(String payload)
 
 boolean MqttController::send_mqtt_available()
 {
-  if (isMqttConnected()) {
-    char deviceAvailableTopic_chars[80];
-    deviceAvailableTopic.toCharArray(deviceAvailableTopic_chars, 80);
-    mqtt_client.publish(deviceAvailableTopic_chars, "online");
-    return true;
-  } else {
-    return false;
-  }
+  return isMqttConnected();
 }
 
 void MqttController::mqttLoop() {
@@ -152,6 +143,7 @@ void MqttController::sendResponse(String cidValue, boolean isSuccess) {
 void MqttController::updateTopics() {
   Logger::log("Updating MQTT Topics...", Logger::DEBUG_LOG);
   String baseTopic = deviceType + "/" + deviceId;
+  this->deviceStatusTopic = baseTopic + "/status";
   this->deviceSubcribeTopic = baseTopic + "/sub";
   this->deviceAcctionTopic = baseTopic + "/act";
   this->deviceNotifyTopic = baseTopic + "/not";

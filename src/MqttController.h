@@ -24,6 +24,8 @@ class MqttController {
     String deviceType;
     String username;
     String password;
+    String deviceStatusTopic;
+    String deviceWillTopic;
     String deviceSubcribeTopic;
     String deviceAcctionTopic;
     String deviceNotifyTopic;
