@@ -37,6 +37,7 @@ boolean MqttController::connect_mqtt()
   String willMessage = "offline";
   if (mqtt_client.connect(deviceId.c_str(), username.c_str(), password.c_str(),
                           deviceAvailableTopic.c_str(),willQos,willRetain,willMessage.c_str())) {
+    mqtt_client.subscribe(deviceAcctionTopic);
     mqtt_client.publish(deviceAvailableTopic.c_str(), "online", true);
     return true;
   }
