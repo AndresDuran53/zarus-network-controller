@@ -37,9 +37,6 @@ boolean MqttController::connect_mqtt()
   String willMessage = "offline";
   if (mqtt_client.connect(deviceId.c_str(), username.c_str(), password.c_str(),
                           deviceAvailableTopic.c_str(),willQos,willRetain,willMessage.c_str())) {
-    char deviceSubcribeTopic_chars[80];
-    deviceSubcribeTopic.toCharArray(deviceSubcribeTopic_chars, 80);
-    mqtt_client.subscribe(deviceSubcribeTopic_chars);
     mqtt_client.publish(deviceAvailableTopic.c_str(), "online");
     return true;
   }
@@ -75,10 +72,7 @@ boolean MqttController::send_mqtt_acction(String payload)
 {
   if (isMqttConnected()) {
     char payload_chars[128];
-    char deviceAcctionTopic_chars[80];
-    payload.toCharArray(payload_chars, 128);
-    deviceAcctionTopic.toCharArray(deviceAcctionTopic_chars, 80);
-    mqtt_client.publish(deviceAcctionTopic_chars, payload_chars);
+    mqtt_client.publish(deviceAcctionTopic.c_str(), payload_chars);
     return true;
   } else {
     return false;
@@ -143,10 +137,8 @@ void MqttController::sendResponse(String cidValue, boolean isSuccess) {
 
 void MqttController::updateTopics() {
   Logger::log("Updating MQTT Topics...", Logger::DEBUG_LOG);
-  String baseTopic = deviceType + "/" + deviceId;
-  this->deviceStatusTopic = baseTopic + "/status";
-  this->deviceSubcribeTopic = baseTopic + "/sub";
-  this->deviceAcctionTopic = baseTopic + "/act";
+  String baseTopic = deviceType + "/" + deviceId;;
+  this->deviceAcctionTopic = baseTopic + "/cmd";
   this->deviceNotifyTopic = baseTopic + "/not";
   this->deviceAvailableTopic = baseTopic + "/available";
 
