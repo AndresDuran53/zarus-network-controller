@@ -43,7 +43,7 @@ class MqttController {
     boolean send_mqtt_available();
     void mqttLoop();
     boolean paramChanger(String argument, String value);
-    void sendResponse(String cidValue, boolean isSuccess);
+    void sendUpdate(String cidValue, String parameter, String value);
     void updateTopics();
     void setServerName(String serverName);
     void setUsername(String username);

@@ -105,7 +105,7 @@ void MqttController::stringToJson(String message) {
   String cidValue = json["CID"];
   Logger::log("Parameter:" + parameter + " | Value:" + value, Logger::DEBUG_LOG);
   boolean receivedChecker = MqttController::paramChanger(parameter, value);
-  MqttController::sendResponse(cidValue, receivedChecker);
+  if(receivedChecker) MqttController::sendUpdate(cidValue, parameter, value);
 }
 
 void MqttController::callback(char* topic, byte* payload, unsigned int length) {
@@ -120,8 +120,8 @@ boolean MqttController::paramChanger(String argumentName, String argumentValue) 
   return wasExecuted;
 }
 
-void MqttController::sendResponse(String cidValue, boolean isSuccess) {
-  String jsonResponse = "{\"CID\":\"" + cidValue + "\",\"Code\":\"" + isSuccess + "\"}";
+void MqttController::sendUpdate(String cidValue, String parameter, String value) {
+  String jsonResponse = "{\"CID\":\"" + cidValue + "\",\"" + parameter + "\":\"" + value + "\"}";
   MqttController::send_mqtt_notification(jsonResponse);
 }
 
