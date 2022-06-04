@@ -39,7 +39,6 @@ class MqttController {
     void setup_mqtt();
     boolean isMqttConnected();
     boolean reconnect_mqtt();
-    boolean send_mqtt_acction(String payload);
     boolean send_mqtt_notification(String payload);
     boolean send_mqtt_available();
     void mqttLoop();

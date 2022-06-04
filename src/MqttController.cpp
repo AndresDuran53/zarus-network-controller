@@ -37,7 +37,7 @@ boolean MqttController::connect_mqtt()
   String willMessage = "offline";
   if (mqtt_client.connect(deviceId.c_str(), username.c_str(), password.c_str(),
                           deviceAvailableTopic.c_str(),willQos,willRetain,willMessage.c_str())) {
-    mqtt_client.subscribe(deviceAcctionTopic);
+    mqtt_client.subscribe(deviceAcctionTopic.c_str());
     mqtt_client.publish(deviceAvailableTopic.c_str(), "online", true);
     return true;
   }
@@ -67,17 +67,6 @@ boolean MqttController::reconnect_mqtt()
   delay(100);
   PubSubClient mqtt_client(wifiClient);
   setup_mqtt();
-}
-
-boolean MqttController::send_mqtt_acction(String payload)
-{
-  if (isMqttConnected()) {
-    char payload_chars[128];
-    mqtt_client.publish(deviceAcctionTopic.c_str(), payload_chars);
-    return true;
-  } else {
-    return false;
-  }
 }
 
 boolean MqttController::send_mqtt_notification(String payload)
