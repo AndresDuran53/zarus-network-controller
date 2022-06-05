@@ -69,6 +69,7 @@ void IoTController::configRedController() {
   redController.setIsValidArgument(CommonData::checkIfCommandNameExist);
   redController.setSetValues(CommonData::setValueByCommandName);
   redController.setGetValue(CommonData::getValueFromCommonDataByCommandName);
+  redController.setSendUpdate(sendMqttMessage);
 }
 
 void IoTController::configMqttController() {

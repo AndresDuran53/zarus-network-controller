@@ -40,6 +40,7 @@ class RedController {
     boolean (*isValidArgument)(String commandName);
     boolean (*setValues)(String argumentName, String argumentValue);
     String (*getValue)(String commandName);
+    boolean (*sendUpdate)(String message);
     const long UTC_OFFSET_IN_SECONDS = -6 * (60 * 60);
     const char* fingerprint = "F2 AD 29 9C 34 48 DD 8D F4 CF 52 32 F6 57 33 68 2E 81 C1 90";
     String ssid;
@@ -84,6 +85,7 @@ class RedController {
     void setIsValidArgument(boolean (setFunction)(String commandName));
     void setSetValues(boolean (setFunction)(String argumentName, String argumentValue));
     void setGetValue(String (setFuntion)(String commandName));
+    void setSendUpdate(boolean (setFunction)(String message));
     String getSsid();
     String getDeviceSSID();
     boolean getShouldConnectToAccessPoint();
