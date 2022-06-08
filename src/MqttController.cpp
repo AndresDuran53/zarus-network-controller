@@ -100,12 +100,16 @@ void MqttController::stringToJson(String message) {
   DynamicJsonDocument jsonMessage(1024);
   deserializeJson(jsonMessage, message);
   JsonObject json = jsonMessage.as<JsonObject>();
-  String parameter = json["parameter"];
-  String value = json[parameter];
   String cidValue = json["CID"];
-  Logger::log("Parameter:" + parameter + " | Value:" + value, Logger::DEBUG_LOG);
-  boolean receivedChecker = MqttController::paramChanger(parameter, value);
-  if(receivedChecker) MqttController::sendUpdate(cidValue, parameter, value);
+  for (JsonPair jasonPair : json) {
+    String argumentName = jasonPair.key().c_str();
+    String argumentValue = jasonPair.value().as<char*>();
+    if ((*MqttController::isValidArgument)(argumentName)) {
+      Logger::log("Parameter:" + argumentName + " | Value:" + argumentValue, Logger::DEBUG_LOG);
+      boolean receivedChecker = MqttController::paramChanger(argumentName, argumentValue);
+      if(receivedChecker) MqttController::sendUpdate(cidValue, argumentName, argumentValue);
+    }
+  }
 }
 
 void MqttController::callback(char* topic, byte* payload, unsigned int length) {
@@ -149,6 +153,10 @@ void MqttController::setPassword(String password) {
 void MqttController::setDeviceId(String deviceId) {
   this->deviceId = deviceId;
   updateTopics();
+}
+
+void MqttController::setIsValidArgument(boolean (setFunction)(String commandName)) {
+  this->isValidArgument = setFunction;
 }
 
 void MqttController::setSetValues(boolean (setFunction)(String commandName, String value)) {

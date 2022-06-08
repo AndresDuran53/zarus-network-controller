@@ -16,6 +16,7 @@
 
 class MqttController {
   private:
+    boolean (*isValidArgument)(String commandName);
     boolean (*setValues)(String commandName, String value);
     String (*getValue)(String commandName);
     String serverName;
@@ -49,6 +50,7 @@ class MqttController {
     void setUsername(String username);
     void setPassword(String password);
     void setDeviceId(String deviceId);
+    void setIsValidArgument(boolean (setFunction)(String commandName));
     void setSetValues(boolean (setFunction)(String commandName, String value));
     void setGetValue(String (setFuntion)(String commandName));
     String getServerName();

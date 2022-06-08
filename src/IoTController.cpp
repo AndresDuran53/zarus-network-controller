@@ -78,6 +78,7 @@ void IoTController::configMqttController() {
                       CommonData::getValueFromCommonDataByCommandName(MQTT_DEVICE_ID),
                       CommonData::getValueFromCommonDataByCommandName(MQTT_USER_NAME),
                       CommonData::getValueFromCommonDataByCommandName(MQTT_USER_PASS));
+  mqttController.setIsValidArgument(CommonData::checkIfCommandNameExist);
   mqttController.setSetValues(CommonData::setValueByCommandName);
   mqttController.setGetValue(CommonData::getValueFromCommonDataByCommandName);
 }
