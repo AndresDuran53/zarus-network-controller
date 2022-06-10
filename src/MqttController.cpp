@@ -105,7 +105,7 @@ void MqttController::stringToJson(String message) {
     String argumentName = jasonPair.key().c_str();
     String argumentValue = jasonPair.value().as<char*>();
     if ((*MqttController::isValidArgument)(argumentName)) {
-      Logger::log("Parameter:" + argumentName + " | Value:" + argumentValue, Logger::DEBUG_LOG);
+      Logger::log("MQTT JSON Parameter:" + argumentName + " | Value:" + argumentValue, Logger::DEBUG_LOG);
       boolean receivedChecker = MqttController::paramChanger(argumentName, argumentValue);
       if(receivedChecker) MqttController::sendUpdate(cidValue, argumentName, argumentValue);
     }
