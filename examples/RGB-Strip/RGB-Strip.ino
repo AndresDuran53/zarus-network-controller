@@ -55,8 +55,8 @@ void setActualBrightness(String newValue) {
 
 void setup() {
   IoTController::setup("rgb-light",3);
-  IoTController::addCommonData("red_color_value", "rgbh", 9, "#000000", "String", [](String hexValue) {setColorFromHex(hexValue);});
-  IoTController::addCommonData("actual_brightness", "lhbr", 9, String(actualBrightness), "int", [](String newValue) {setActualBrightness(newValue);});
+  IoTController::createStoredData("red_color_value", "rgbh", 9, "#000000", "String", [](String hexValue) {setColorFromHex(hexValue);});
+  IoTController::createStoredData("actual_brightness", "lhbr", 9, String(actualBrightness), "int", [](String newValue) {setActualBrightness(newValue);});
   IoTController::init();
   configGPIO();
   startLights();

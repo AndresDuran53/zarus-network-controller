@@ -64,9 +64,9 @@ Libraries:
   * Description:
   Use an internal loop to run the timers, receive data and check the connections,
 
-* **AddCommonData:**
+* **createStoredData:**
    ```C++
-    static void addCommonData(String name, String commandName,
+    static void createStoredData(String name, String commandName,
           int valueLenght, String defaultValue,
           String valueType, void (setFunction)(String value));
     ```

@@ -12,13 +12,11 @@
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
 #include "Logger.h"
+#include "DataController.h"
 
 
 class MqttController {
   private:
-    boolean (*isValidArgument)(String commandName);
-    boolean (*setValues)(String commandName, String value);
-    String (*getValue)(String commandName);
     String serverName;
     int port;
     String deviceId;
@@ -43,16 +41,12 @@ class MqttController {
     boolean send_mqtt_notification(String payload);
     boolean send_mqtt_available();
     void mqttLoop();
-    boolean paramChanger(String argument, String value);
-    void sendUpdate(String cidValue, String parameter, String value);
+    boolean paramChanger(String argument, String value, String cid = "2");
     void updateTopics();
     void setServerName(String serverName);
     void setUsername(String username);
     void setPassword(String password);
     void setDeviceId(String deviceId);
-    void setIsValidArgument(boolean (setFunction)(String commandName));
-    void setSetValues(boolean (setFunction)(String commandName, String value));
-    void setGetValue(String (setFuntion)(String commandName));
     String getServerName();
     String getUsername();
     String getPassword();

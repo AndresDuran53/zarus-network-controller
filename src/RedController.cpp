@@ -147,8 +147,8 @@ void RedController::handleSetValues(AsyncWebServerRequest *request) {
     AsyncWebParameter* parameterAux = request->getParam(i);
     String argumentName = parameterAux->name();
     String argumentValue = parameterAux->value();
-    if ((*RedController::isValidArgument)(argumentName)) {
-      boolean wasExecuted = (*RedController::setValues)(argumentName, argumentValue);
+    if ((*DataController::isValidCommandName)(argumentName)) {
+      boolean wasExecuted = (*DataController::setValueByCommandName)(argumentName, argumentValue,"1");
       if (wasExecuted){
         if(valuesChanged!="") valuesChanged += ",";
         valuesChanged += "\""+ argumentName + "\":\"" + argumentValue + "\"";
@@ -157,12 +157,11 @@ void RedController::handleSetValues(AsyncWebServerRequest *request) {
   }
   String jsonResponse = "{\"CID\":\"1\","+ valuesChanged +"}";
   request->send(200, "text/json", jsonResponse);
-  sendUpdate(jsonResponse);
   if (hasToResetWifi) {
     Logger::log("Has To Reset the Wifi to update values", Logger::INFO_LOG);
     hasToResetWifi = false;
-    if((*RedController::isValidArgument)("rdccm")){
-      boolean wasExecuted = (*RedController::setValues)("rdccm", "1");
+    if((*DataController::isValidCommandName)("rdccm")){
+      boolean wasExecuted = (*DataController::setValueByCommandName)("rdccm", "1","1");
     }
   }
 }
@@ -234,22 +233,6 @@ void RedController::setDeviceCredentials(String deviceSsid, String devicePasswor
     anyChange = true;
   }
   //if (anyChange) ESP.restart();
-}
-
-void RedController::setIsValidArgument(boolean (setFunction)(String commandName)) {
-  this->isValidArgument = setFunction;
-}
-
-void RedController::setSetValues(boolean (setFunction)(String argumentName, String argumentValue)) {
-  this->setValues = setFunction;
-}
-
-void RedController::setGetValue(String (setFuntion)(String commandName)) {
-  this->getValue = setFuntion;
-}
-
-void RedController::setSendUpdate(boolean (setFunction)(String message)) {
-  this->sendUpdate = setFunction;
 }
 
 boolean RedController::getShouldConnectToAccessPoint() {

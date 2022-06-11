@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include "Logger.h"
-#include "CommonData.h"
+#include "DataController.h"
 #include "RedController.h"
 #include "MqttController.h"
 #include "Timer.h"
@@ -47,8 +47,9 @@ class IoTController {
     static String getRequests(String url);
     static void setTimers();
     static void addTimer(int intervalInMillis, void (actionToExecute)());
-    static void addCommonData(String name, String commandName, int valueLenght, String defaultValue,
+    static void createStoredData(String name, String commandName, int valueLenght, String defaultValue,
                               String valueType, void (setFunction)(String value));
+    static boolean changeStoredValue(String commandName, String value);
     static void setConsoleLevel(uint8_t consoleLevel);
     static void print(String message);
     static void setup(String deviceType, uint8_t consoleLevel = 0, String deviceToken = DEVICE_TOKEN);

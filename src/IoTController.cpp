@@ -23,64 +23,57 @@ void IoTController::setDeviceToRestart(String restartDevice) {
 void IoTController::restartDeviceDueCommand() {
   if (deviceHasToRestart == "1") {
     Logger::log("Restarting Device Safety", Logger::INFO_LOG);
-    CommonData::setValueByCommandName(RESTART_DEVICE_COMMAND_NAME, "0");
+    DataController::setValueByCommandName(RESTART_DEVICE_COMMAND_NAME, "0", "0");
     ESP.restart();
   }
 }
 
 void IoTController::fillCommonData() {
   Logger::log("Filling Common data...", Logger::INFO_LOG);
-  CommonData::createCommonData("restart_device", RESTART_DEVICE_COMMAND_NAME, 2, "0", "String", [](String restartDevice) {
+  DataController::createCommonData("restart_device", RESTART_DEVICE_COMMAND_NAME, 2, "0", "String", [](String restartDevice) {
     setDeviceToRestart(restartDevice);
   });
   //Net Values
-  CommonData::createCommonData("red_deviceSsid", DEVICE_NAME_COMMAND_NAME, 32, deviceUniqueName, "String", [](String deviceSsid) {
+  DataController::createCommonData("red_deviceSsid", DEVICE_NAME_COMMAND_NAME, 32, deviceUniqueName, "String", [](String deviceSsid) {
     redController.setDeviceSSID(deviceSsid);
   });
-  CommonData::createCommonData("red_devicePswd", DEVICE_PASSWORD_COMMAND_NAME, 32, DEVICE_PASSWORD, "String", [](String devicePassword) {
+  DataController::createCommonData("red_devicePswd", DEVICE_PASSWORD_COMMAND_NAME, 32, DEVICE_PASSWORD, "String", [](String devicePassword) {
     redController.setDevicePassword(devicePassword);
   });
-  CommonData::createCommonData("red_ssid", RED_NAME_COMMAND_NAME, 32, "", "String", [](String redSsid) {
+  DataController::createCommonData("red_ssid", RED_NAME_COMMAND_NAME, 32, "", "String", [](String redSsid) {
     redController.setSsid(redSsid);
   });
-  CommonData::createCommonData("red_pswd", RED_PASSWORD_COMMAND_NAME, 32, "", "String", [](String redPassword) {
+  DataController::createCommonData("red_pswd", RED_PASSWORD_COMMAND_NAME, 32, "", "String", [](String redPassword) {
     redController.setPassword(redPassword);
   });
   //MQTT Values
-  CommonData::createCommonData("mqtt_Server", MQTT_SERVER_NAME, 32, "", "String", [](String ServerName) {
+  DataController::createCommonData("mqtt_Server", MQTT_SERVER_NAME, 32, "", "String", [](String ServerName) {
     mqttController.setServerName(ServerName);
   });
-  CommonData::createCommonData("mqtt_User", MQTT_USER_NAME, 16, "", "String", [](String username) {
+  DataController::createCommonData("mqtt_User", MQTT_USER_NAME, 16, "", "String", [](String username) {
     mqttController.setUsername(username);
   });
-  CommonData::createCommonData("mqtt_Pswd", MQTT_USER_PASS, 16, "", "String", [](String password) {
+  DataController::createCommonData("mqtt_Pswd", MQTT_USER_PASS, 16, "", "String", [](String password) {
     mqttController.setPassword(password);
   });
-  CommonData::createCommonData("mqtt_deviceId", MQTT_DEVICE_ID, 8, deviceToken, "String", [](String deviceid) {
+  DataController::createCommonData("mqtt_deviceId", MQTT_DEVICE_ID, 8, deviceToken, "String", [](String deviceid) {
     mqttController.setDeviceId(deviceid);
   });
 }
 
 void IoTController::configRedController() {
-  redController.init(CommonData::getValueFromCommonDataByCommandName(DEVICE_NAME_COMMAND_NAME),
-                     CommonData::getValueFromCommonDataByCommandName(DEVICE_PASSWORD_COMMAND_NAME),
-                     CommonData::getValueFromCommonDataByCommandName(RED_NAME_COMMAND_NAME),
-                     CommonData::getValueFromCommonDataByCommandName(RED_PASSWORD_COMMAND_NAME));
-  redController.setIsValidArgument(CommonData::checkIfCommandNameExist);
-  redController.setSetValues(CommonData::setValueByCommandName);
-  redController.setGetValue(CommonData::getValueFromCommonDataByCommandName);
-  redController.setSendUpdate(sendMqttMessage);
+  redController.init(DataController::getValueByCommandName(DEVICE_NAME_COMMAND_NAME),
+                     DataController::getValueByCommandName(DEVICE_PASSWORD_COMMAND_NAME),
+                     DataController::getValueByCommandName(RED_NAME_COMMAND_NAME),
+                     DataController::getValueByCommandName(RED_PASSWORD_COMMAND_NAME));
 }
 
 void IoTController::configMqttController() {
-  mqttController.init(CommonData::getValueFromCommonDataByCommandName(MQTT_SERVER_NAME),
+  mqttController.init(DataController::getValueByCommandName(MQTT_SERVER_NAME),
                       deviceType,
-                      CommonData::getValueFromCommonDataByCommandName(MQTT_DEVICE_ID),
-                      CommonData::getValueFromCommonDataByCommandName(MQTT_USER_NAME),
-                      CommonData::getValueFromCommonDataByCommandName(MQTT_USER_PASS));
-  mqttController.setIsValidArgument(CommonData::checkIfCommandNameExist);
-  mqttController.setSetValues(CommonData::setValueByCommandName);
-  mqttController.setGetValue(CommonData::getValueFromCommonDataByCommandName);
+                      DataController::getValueByCommandName(MQTT_DEVICE_ID),
+                      DataController::getValueByCommandName(MQTT_USER_NAME),
+                      DataController::getValueByCommandName(MQTT_USER_PASS));
 }
 
 boolean IoTController::sendMqttMessage(String message) {
@@ -117,8 +110,12 @@ void IoTController::addTimer(int intervalInMillis, void (actionToExecute)()) {
   Timer::createTimer(intervalInMillis, actionToExecute);
 }
 
-void IoTController::addCommonData(String name, String commandName, int valueLenght, String defaultValue, String valueType, void (setFunction)(String value)) {
-  CommonData::createCommonData(name, commandName, valueLenght, defaultValue, valueType, setFunction);
+void IoTController::createStoredData(String name, String commandName, int valueLenght, String defaultValue, String valueType, void (setFunction)(String value)) {
+  DataController::createCommonData(name, commandName, valueLenght, defaultValue, valueType, setFunction);
+}
+
+boolean IoTController::changeStoredValue(String commandName, String value){
+  DataController::setValueByCommandName(commandName, value, "0");
 }
 
 void IoTController::print(String message) {
@@ -140,9 +137,10 @@ void IoTController::setup(String pDeviceType, uint8_t consoleLevel, String pDevi
 }
 
 void IoTController::init() {
-  CommonData::getDataFromEeprom();
+  DataController::getDataFromEeprom();
   configRedController();
   configMqttController();
+  DataController::setSendValueUpdate(sendMqttMessage);
 }
 
 void IoTController::loop() {

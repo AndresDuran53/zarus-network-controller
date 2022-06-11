@@ -104,10 +104,9 @@ void MqttController::stringToJson(String message) {
   for (JsonPair jasonPair : json) {
     String argumentName = jasonPair.key().c_str();
     String argumentValue = jasonPair.value().as<char*>();
-    if ((*MqttController::isValidArgument)(argumentName)) {
+    if ((*DataController::isValidCommandName)(argumentName)) {
       Logger::log("MQTT JSON Parameter:" + argumentName + " | Value:" + argumentValue, Logger::DEBUG_LOG);
-      boolean receivedChecker = MqttController::paramChanger(argumentName, argumentValue);
-      if(receivedChecker) MqttController::sendUpdate(cidValue, argumentName, argumentValue);
+      boolean receivedChecker = MqttController::paramChanger(argumentName, argumentValue, cidValue);
     }
   }
 }
@@ -118,15 +117,10 @@ void MqttController::callback(char* topic, byte* payload, unsigned int length) {
   stringToJson(receivedMessage);
 }
 
-boolean MqttController::paramChanger(String argumentName, String argumentValue) {
-  boolean wasExecuted = (*MqttController::setValues)(argumentName, argumentValue);
+boolean MqttController::paramChanger(String argumentName, String argumentValue, String cid) {
+  boolean wasExecuted = (*DataController::setValueByCommandName)(argumentName, argumentValue, cid);
   Logger::log(argumentName + "=" + argumentValue + ":"+String(wasExecuted), Logger::DEBUG_LOG);
   return wasExecuted;
-}
-
-void MqttController::sendUpdate(String cidValue, String parameter, String value) {
-  String jsonResponse = "{\"CID\":\"" + cidValue + "\",\"" + parameter + "\":\"" + value + "\"}";
-  MqttController::send_mqtt_notification(jsonResponse);
 }
 
 void MqttController::updateTopics() {
@@ -153,17 +147,6 @@ void MqttController::setPassword(String password) {
 void MqttController::setDeviceId(String deviceId) {
   this->deviceId = deviceId;
   updateTopics();
-}
-
-void MqttController::setIsValidArgument(boolean (setFunction)(String commandName)) {
-  this->isValidArgument = setFunction;
-}
-
-void MqttController::setSetValues(boolean (setFunction)(String commandName, String value)) {
-  this->setValues = setFunction;
-}
-void MqttController::setGetValue(String (setFuntion)(String commandName)) {
-  this->getValue = setFuntion;
 }
 
 String MqttController::getServerName() {
