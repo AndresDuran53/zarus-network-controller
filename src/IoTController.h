@@ -50,6 +50,7 @@ class IoTController {
     static void createStoredData(String name, String commandName, int valueLenght, String defaultValue,
                               String valueType, void (setFunction)(String value));
     static boolean changeStoredValue(String commandName, String value);
+    static String getStoredValue(String commandName);
     static void setConsoleLevel(uint8_t consoleLevel);
     static void print(String message);
     static void setup(String deviceType, uint8_t consoleLevel = 0, String deviceToken = DEVICE_TOKEN);
