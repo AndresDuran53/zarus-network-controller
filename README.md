@@ -80,7 +80,7 @@ Libraries:
     * valueType (String):
     * setFunction (Function Pointer):
 
-* **createStoredData:**
+* **changeStoredValue:**
    ```C++
     static boolean changeStoredValue(String commandName, String value);
     ```
@@ -90,7 +90,7 @@ Libraries:
     * commandName (String):
     * value (String):
 
-* **createStoredData:**
+* **sendMqttMessage:**
    ```C++
     static boolean sendMqttMessage(String message);
     ```
