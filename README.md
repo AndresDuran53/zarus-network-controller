@@ -80,6 +80,25 @@ Libraries:
     * valueType (String):
     * setFunction (Function Pointer):
 
+* **createStoredData:**
+   ```C++
+    static boolean changeStoredValue(String commandName, String value);
+    ```
+  * Description:
+  Change/Update the value stored using his commandName assigned.
+  * Parameters:
+    * commandName (String):
+    * value (String):
+
+* **createStoredData:**
+   ```C++
+    static boolean sendMqttMessage(String message);
+    ```
+  * Description:
+  Sends a message using MQTT if it is defined an connected.
+  * Parameters:
+    * message (String):
+
 * **AddTimer:**
    ```C++
     static void addTimer(int intervalInMillis, void (actionToExecute)());
@@ -92,7 +111,7 @@ Libraries:
 
 * **Print:**
    ```C++
-    void print(String message);
+    static void print(String message);
     ```
   * Description:
   Use it to print messages in the same format with the internal logger.
