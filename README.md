@@ -21,8 +21,6 @@ It's able to manage:
 * Adds device-type and an Unique identifier to avoid conflict.
 * Configures all this with almost no code and production-friendly
 
-[<img src="NetworkControllerDiagram.jpg" alt="Code Diagram" width="250">](NetworkControllerDiagram.jpg)
-
 ## Quick Start
 ### Libraries and tools needed
 Tools for uploading files into the ESP device:
@@ -36,6 +34,8 @@ Libraries:
 * ESP8266: [ESP8266LittleFS v2.6.0](https://github.com/esp8266/arduino-esp8266fs-plugin/) | ESP32: [LittleFS v1.0.6](https://github.com/lorol/LITTLEFS)
 * ESP8266: [ESPAsyncTCP v1.2.2](https://github.com/me-no-dev/ESPAsyncTCP) | ESP32: [AsyncTCP v1.1.1](https://github.com/me-no-dev/AsyncTCP)
 * ESP8266: [ESP8266mDNS](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266mDNS) | ESP32: [ESPmDNS](https://github.com/espressif/arduino-esp32)
+
+[<img src="NetworkControllerDiagram.jpg" alt="Code Diagram">](NetworkControllerDiagram.jpg)
 
 ### Methods
 
