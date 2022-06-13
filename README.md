@@ -21,6 +21,8 @@ It's able to manage:
 * Adds device-type and an Unique identifier to avoid conflict.
 * Configures all this with almost no code and production-friendly
 
+[<img src="NetworkControllerDiagram.jpg" alt="Code Diagram" width="250">](NetworkControllerDiagram.jpg)
+
 ## Quick Start
 ### Libraries and tools needed
 Tools for uploading files into the ESP device:
