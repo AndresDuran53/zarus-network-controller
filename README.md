@@ -2,7 +2,7 @@
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/AndresDuran53/zarus-network-controller?sort=semver)
 ![GitHub Tag (latest SemVer)](https://img.shields.io/github/v/tag/AndresDuran53/zarus-network-controller?sort=semver)
 
-<img  width="480" src="https://raw.githubusercontent.com/AndresDuran53/zarus-network-controller/master/iot_banner.png">
+<img  width="480" src="https://raw.githubusercontent.com/AndresDuran53/zarus-network-controller/master/media/iot_banner.png">
 
 # IoT Network Controller for ESP8266 and ESP32
 Easy-To-Use library to implement just the code that you need.
@@ -35,7 +35,7 @@ Libraries:
 * ESP8266: [ESPAsyncTCP v1.2.2](https://github.com/me-no-dev/ESPAsyncTCP) | ESP32: [AsyncTCP v1.1.1](https://github.com/me-no-dev/AsyncTCP)
 * ESP8266: [ESP8266mDNS](https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266mDNS) | ESP32: [ESPmDNS](https://github.com/espressif/arduino-esp32)
 
-[<img src="NetworkControllerDiagram.jpg" alt="Code Diagram">](NetworkControllerDiagram.jpg)
+[<img src="media/NetworkControllerDiagram.jpg" alt="Code Diagram">](media/NetworkControllerDiagram.jpg)
 
 ### Methods
 
