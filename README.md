@@ -2,7 +2,7 @@
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/AndresDuran53/zarus-network-controller?sort=semver)
 ![GitHub Tag (latest SemVer)](https://img.shields.io/github/v/tag/AndresDuran53/zarus-network-controller?sort=semver)
 
-<img  width="480" src="https://raw.githubusercontent.com/AndresDuran53/zarus-network-controller/master/media/iot_banner.png">
+<img  width="480" src="media/iot_banner.png">
 
 # IoT Network Controller for ESP8266 and ESP32
 Easy-To-Use library to implement just the code that you need.
