@@ -1,7 +1,7 @@
 #include "DataController.h"
 
 boolean DataController::sendValueUpdateSeted = false;
-boolean (*DataController::sendValueUpdate)(String message) = false;
+boolean (*DataController::sendValueUpdate)(String message) = NULL;
 
 void DataController::getDataFromEeprom(){
   CommonData::getDataFromEeprom();

@@ -129,6 +129,7 @@ void IoTController::createStoredData(String name, String commandName,
 
 boolean IoTController::changeStoredValue(String commandName, String value){
   DataController::setValueByCommandName(commandName, value, "0");
+  return true;
 }
 
 String IoTController::getStoredValue(String commandName){

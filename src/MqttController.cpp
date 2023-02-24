@@ -67,6 +67,7 @@ boolean MqttController::reconnect_mqtt()
   delay(100);
   PubSubClient mqtt_client(wifiClient);
   setup_mqtt();
+  return true;
 }
 
 boolean MqttController::send_mqtt_notification(String payload)
@@ -76,7 +77,7 @@ boolean MqttController::send_mqtt_notification(String payload)
     char deviceNotifyTopic_chars[80];
     payload.toCharArray(payload_chars, 128);
     deviceNotifyTopic.toCharArray(deviceNotifyTopic_chars, 80);
-    mqtt_client.publish(deviceNotifyTopic_chars, payload_chars);
+    mqtt_client.publish(deviceNotifyTopic_chars, payload_chars, true);
     return true;
   } else {
     return false;
