@@ -24,7 +24,7 @@ It's able to manage:
 ## Quick Start
 ### Libraries and tools needed
 Tools for uploading files into the ESP device:
-* ESP8266: [ESP8266fs](https://github.com/esp8266/arduino-esp8266fs-plugin/releases) | ESP32: [ESP32FS](https://github.com/me-no-dev/arduino-esp32fs-plugin/releases)
+* ESP8266: [esp8266littlefs](https://github.com/earlephilhower/arduino-esp8266littlefs-plugin/releases)
 
 Libraries:
 * [ESPAsyncWebServer v1.2.3](https://github.com/me-no-dev/ESPAsyncWebServer)
