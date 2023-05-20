@@ -61,13 +61,12 @@ boolean MqttController::isMqttConnected() {
   return isConnect;
 }
 
-boolean MqttController::reconnect_mqtt()
+void MqttController::reconnect_mqtt()
 {
   mqtt_client.disconnect();
   delay(100);
   PubSubClient mqtt_client(wifiClient);
   setup_mqtt();
-  return true;
 }
 
 boolean MqttController::send_mqtt_notification(String payload)
