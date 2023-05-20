@@ -37,7 +37,7 @@ class MqttController {
     void init(String serverName, String deviceType, String deviceId, String username, String password);
     void setup_mqtt();
     boolean isMqttConnected();
-    boolean reconnect_mqtt();
+    void reconnect_mqtt();
     boolean send_mqtt_notification(String payload);
     boolean send_mqtt_available();
     void mqttLoop();
