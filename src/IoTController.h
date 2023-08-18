@@ -45,6 +45,7 @@ class IoTController {
     static boolean sendMqttMessage(String message);
     static void checkReceivedMqttData();
     static String getRequests(String url);
+    static void UpdateMDNS();
     static void setTimers();
     static void addTimer(int intervalInMillis, void (actionToExecute)());
     static void createStoredData(String name, String commandName, int valueLenght, String defaultValue,
