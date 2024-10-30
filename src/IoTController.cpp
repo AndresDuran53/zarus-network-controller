@@ -104,6 +104,10 @@ String IoTController::getRequests(String url){
   return redController.getRequests(url);
 }
 
+void IoTController::UpdateMDNS(){
+  redController.handleClient();
+}
+
 void IoTController::setTimers() {
   //restarDeviceCheckerTimer
   Timer::createTimer(1000, restartDeviceDueCommand);
@@ -113,6 +117,8 @@ void IoTController::setTimers() {
   });
   //mqttPayloadCheckerTimer
   Timer::createTimer(500, checkReceivedMqttData);
+  //MDNS Update
+  Timer::createTimer(500, UpdateMDNS);
 }
 
 void IoTController::addTimer(int intervalInMillis, void (actionToExecute)()) {
@@ -162,6 +168,5 @@ void IoTController::init() {
 }
 
 void IoTController::loop() {
-  redController.handleClient();
   Timer::executeLoops();
 }
